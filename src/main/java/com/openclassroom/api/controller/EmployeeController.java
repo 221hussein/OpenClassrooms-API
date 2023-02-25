@@ -42,7 +42,7 @@ public class EmployeeController {
     @PutMapping("/employee{id}")
     public Employee updateEmployee(@PathVariable("id") final Long id,@RequestBody Employee employee){
         Optional<Employee> e = employeeService.getEmployee(id);
-        if(e.isEmpty()){
+        if(e.isPresent()){
             Employee currentEmployee = e.get();
             String firstName = employee.getFirstName();
             if (firstName != null){
